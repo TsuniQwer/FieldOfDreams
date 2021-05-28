@@ -49,8 +49,6 @@ namespace С_
             string randomPrompt = (prompts[num_word]);  // ПОДСКАЗКА
             string[] playerWord = new string[randomWord.Length]; // УГАДАННЫЕ БУКВЫ ИГРОКА
 
-            int d = 0; // ?
-
            
 
             System.Console.WriteLine("Слово загадано.\n");
@@ -134,7 +132,7 @@ namespace С_
                     }
                 }
                 // ИГРОК КРУТИТ БАРАБАН
-                else if (user == "2") {Baraban(ref points, ref randomWord, ref checkTrys, ref playerWord, ref d);}
+                else if (user == "2") {Baraban(ref points, ref randomWord, ref checkTrys, ref playerWord);}
 
                 if (checkTrys == false) {trys += 1;}
                 
@@ -155,7 +153,7 @@ namespace С_
         
         
         // *КРУТИТЬСЯ БАРАБАН
-        static void Baraban(ref int points, ref string randomWord, ref bool checkTrys, ref string[] playerWord, ref int d){   
+        static void Baraban(ref int points, ref string randomWord, ref bool checkTrys, ref string[] playerWord){   
             
             int[] point = {0,900,400,800,600,1500,1000,700,200,300,500};
 
@@ -165,13 +163,13 @@ namespace С_
             points += randomPoint;
             System.Console.WriteLine("Крутиться барабан...");
             System.Console.WriteLine($"На барабане: {randomPoint} очков.");
-            AnswerkLatter(ref randomWord, ref checkTrys, ref playerWord, ref d);
+            AnswerkLatter(ref randomWord, ref checkTrys, ref playerWord);
             
         }
 
         //TODO ИГРОК НАЗЫВАЕТ БУКВУ 
-        static void AnswerkLatter(ref string randomWord, ref bool checkTrys, ref string[] playerWord,ref int d){
-            d++;
+        static void AnswerkLatter(ref string randomWord, ref bool checkTrys, ref string[] playerWord){
+  
             System.Console.WriteLine("\nВаша буква? ...");
             string userLetter = Console.ReadLine().ToLower();
 
@@ -191,7 +189,7 @@ namespace С_
                         Thread.Sleep(800); // мс
                         System.Console.WriteLine("Такая буква уже есть!"); // ?
                         checkTrys = false;
-                        AnswerkLatter(ref randomWord, ref checkTrys, ref playerWord, ref d);
+                        AnswerkLatter(ref randomWord, ref checkTrys, ref playerWord);
                         return;
                     }
 
